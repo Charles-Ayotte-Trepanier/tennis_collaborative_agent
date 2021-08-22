@@ -5,13 +5,13 @@ For the project, the learning algorithm used to train the agent is based on the 
 The approach Shangtong Zhang took in developing agents makes them agnostic to the specific environment they might be used for. 
 
 Due to the continuous nature of the action-space, the specific algorithm used was similar, to MADDPG.
-We took the DDPG algorithm from Shangtong Zhang and modified it for our collaborative problem:
+We took the DDPG algorithm from Shangtong Zhang - as it worked quite well in solving the Reacher environment - and modified it for our collaborative problem:
 - A single agent is trained. This agent controls both players.
+- When it controls left player, it can use only left player state for the actor, but can also use the right player state for the critic (and vise versa.)
 - Replay buffer stores not only the state/next state, but also the state and next state from our 'colleague' (the other agent with whom we are playing tennis.)
 - For each sample, the reward is the sum of reward of both agents.
 - At each time step, the replay buffer actually add 2 samples (one from each player.)
 - The critic has access to the state/next state of the other agent - not the actor.
-- Besides these slight differences, the algorithm is very similar to the DDPG one we successfully used in the second project of the nanodegree.
 
 Our own implementation of the MADDPG agent can be found in the notebook Tennis.ipynb .
 
