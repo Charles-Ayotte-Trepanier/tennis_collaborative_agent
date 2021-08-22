@@ -107,7 +107,7 @@ Execute the cells in `Tennis.ipynb` to train the agent.
 ### Resources
 Resources from which the algorithm was builts:
 
-https://arxiv.org/pdf/1706.02275.pdf
-https://github.com/openai/maddpg
-https://github.com/shariqiqbal2810/maddpg-pytorch
-https://github.com/ShangtongZhang/DeepRL
+- https://arxiv.org/pdf/1706.02275.pdf
+- https://github.com/openai/maddpg
+- https://github.com/shariqiqbal2810/maddpg-pytorch
+- https://github.com/ShangtongZhang/DeepRL
