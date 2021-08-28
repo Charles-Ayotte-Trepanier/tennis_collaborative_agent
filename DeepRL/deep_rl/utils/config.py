@@ -9,7 +9,7 @@ import torch
 
 
 class Config:
-    DEVICE = torch.device('cpu')
+    DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     NOISY_LAYER_STD = 0.1
     DEFAULT_REPLAY = 'replay'
     PRIORITIZED_REPLAY = 'prioritized_replay'
