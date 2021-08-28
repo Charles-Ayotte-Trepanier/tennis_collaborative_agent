@@ -36,7 +36,7 @@ class Memory:  # stored as ( s, a, r, s_ ) in SumTree
   e = 0.001
   a = 0.6
   beta = 0.4
-  beta_increment_per_sampling = 0.00001
+  beta_increment_per_sampling = 0.0000001
 
   def __init__(self, capacity):
     self.tree = SumTree(capacity)
