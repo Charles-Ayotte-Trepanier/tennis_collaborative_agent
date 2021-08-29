@@ -33,8 +33,8 @@ The following configurations/hyper-parameters were used:
 
    
 ## Solving the environment
-The average reward between episodes 1137 and 1237 is 0.52 . We can then say that the environment
-was solved after episode 1237.
+The average reward between episodes 747 and 847 is 0.52 . We can then say that the environment
+was solved after episode 747.
 
 ## Plot of rewards
 ![image info](./tennis_scores.png)
@@ -44,3 +44,10 @@ was solved after episode 1237.
 1. There are definitely opportunities of improving the agent through hyper-parameters tuning (including the architecture of the actor/critic networks in the MADDPG agent.)
 2. It took many episodes to solve the problem, and quite a while to get our average score of 2 (since episodes take a while to run when the agent is good.) Prioritized replay could possibly help speeding up convergence.
 3. We built our own MADDPG-ish algorithm. It would be interesting to compare with the actual MADDPG algorithm.
+
+## Helper functions borrowed from https://github.com/ShangtongZhang/DeepRL
+- from helpers.replay import UniformReplay
+- from helpers.random_processes import OrnsteinUhlenbeckProcess
+- from helpers.schedule import LinearSchedule
+- from helpers.torch_utils import tensor, to_np
+- from helpers.network_utils import layer_init
