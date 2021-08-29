@@ -12,13 +12,20 @@ We took the DDPG algorithm from project 2 (Reacher) - as it worked quite well in
 
 Our own implementation of the MADDPG agent can be found in the notebook Tennis.ipynb .
 
+After collecting a large number of states in the replay buffer, we created vectors for the means and min/max values. This is used to 'normalize' the inputs.
+
+
+Many hyper-parameters were tested. The ones that had the more clear and direct impacts were the discounting rate and soft update discounting factor.
+The reward discount was reduced to 0.96 (compared to the usual 0.99) and the soft-update discount for target network was increased to 5e-2.
+
 The following configurations/hyper-parameters were used:
 - Reward discounting factor: 0.96
 - Soft update parameter: 5e-2
 - Exploration/randomness: Ornstein-Uhlenbeck process with standard deviation of 0.1
 - Actor network: Fully connected network with layers (50, 50, 50, 20) and relu gates (and tanh activation to predict the action.)
 - Critic network: Fully connected network with layers (100, 50, 50, 20) and relu gates (linear activation)
-- Optimizer (for both nerworks): Adam with learning rate 1e-3 
+- Used a batch normalization layer after the first linear yaer (before activation) for both networks.
+- Optimizer (for both networks): Adam with learning rate 1e-3 
 - Replay buffer: memory size of 1e6 and batch size of 128.
 - UPDATE_EVERY: 20 - every 20 time steps.
 - UPDATE_NETWORK: 4 - runs 4 batches
