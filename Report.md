@@ -1,11 +1,8 @@
 # Report
 
 ## Learning algorithm
-For the project, the learning algorithm used to train the agent is based on the work of Shangtong Zhang (https://github.com/ShangtongZhang/DeepRL.)
-The approach Shangtong Zhang took in developing agents makes them agnostic to the specific environment they might be used for. 
-
 Due to the continuous nature of the action-space, the specific algorithm used was similar, to MADDPG.
-We took the DDPG algorithm from Shangtong Zhang - as it worked quite well in solving the Reacher environment - and modified it for our collaborative problem:
+We took the DDPG algorithm from project 2 (Reacher) - as it worked quite well in solving that environment - and modified it for our collaborative problem:
 - A single agent is trained. This agent controls both players.
 - When it controls left player, it can use only left player state for the actor, but can also use the right player state for the critic (and vise versa.)
 - Replay buffer stores not only the state/next state, but also the state and next state from our 'colleague' (the other agent with whom we are playing tennis.)
@@ -15,28 +12,22 @@ We took the DDPG algorithm from Shangtong Zhang - as it worked quite well in sol
 
 Our own implementation of the MADDPG agent can be found in the notebook Tennis.ipynb .
 
-From Shangtong Zhang's code, we this agent leveraged:
-- DeterministicActorCriticNet: A convenient wrapper over the actor and critic networks required for DDPG.
-- UniformReplay: Replay buffer implementation.
-- OrnsteinUhlenbeckProcess: Implementation of the Ornstein-Uhlenbeck process, a solution for exploration in continuous action space.
-
 The following configurations/hyper-parameters were used:
-- Reward discounting factor: 0.99
-- Soft update parameter: 5e-3
-- Ornstein-Uhlenbeck process: standard deviation of 0.1
-- Actor network: Fully connected network with layers [50, 50, 50, 50, 50, 20] and relu gates (and tanh activation to predict the action.)
-- Critic network: Fully connected network with layers [100, 50, 50, 50, 50, 50, 20] and relu gates (linear activation)
+- Reward discounting factor: 0.96
+- Soft update parameter: 5e-2
+- Exploration/randomness: Ornstein-Uhlenbeck process with standard deviation of 0.1
+- Actor network: Fully connected network with layers (50, 50, 50, 20) and relu gates (and tanh activation to predict the action.)
+- Critic network: Fully connected network with layers (100, 50, 50, 20) and relu gates (linear activation)
 - Optimizer (for both nerworks): Adam with learning rate 1e-3 
 - Replay buffer: memory size of 1e6 and batch size of 128.
-- Updates frequency: every 4 time steps.
+- UPDATE_EVERY: 20 - every 20 time steps.
+- UPDATE_NETWORK: 4 - runs 4 batches
 - Warm up: Wait 1e3 time steps before starting updates.
 
    
 ## Solving the environment
-The average reward between episodes 3100 and 3200 is 0.61 . We can then say that the environment
-was solved after episode 3100.
-
-We wanted to solve the environment 'perfectly' and continued training until we reached an average score of 2 (4200 episodes.)
+The average reward between episodes 1137 and 1237 is 0.52 . We can then say that the environment
+was solved after episode 1237.
 
 ## Plot of rewards
 ![image info](./tennis_scores.png)
